@@ -14,6 +14,9 @@ if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 elif [ "$ARCH" == "armhf" ] || [ "$ARCH" == "aarch64" ]; then
     EXTRA_CONFIGURE_FLAGS=" --host=$DEBARCH --target=$DEBARCH"
+elif [ "$ARCH" == "loongarch64" ] || [ "$ARCH" == "loong64" ]; then
+    sed -i "s:t-secmem::" tests/Makefile.am
+    sed -i "s:t-sexp::" tests/Makefile.am
 fi
 
 [ -f autogen.sh ] && ./autogen.sh
