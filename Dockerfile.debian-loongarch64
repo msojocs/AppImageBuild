@@ -1,17 +1,17 @@
-FROM ghcr.io/loongarchlinux/archlinux:latest
+FROM cr.loongnix.cn/library/debian:buster-slim
 
-ENV ARCH=loongarch64 DIST=archlinux
+ENV ARCH=loongarch64 DIST=debian
 
 # inherited by build scripts
 ARG VERBOSE=0
 
-COPY /entrypoint-archlinux.sh /entrypoint.sh
+COPY /entrypoint-ubuntu.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 SHELL ["/entrypoint.sh", "bash", "-c"]
 
-COPY ./install-deps-archlinux.sh /
-RUN bash -x /install-deps-archlinux.sh
+COPY ./install-deps-ubuntu.sh /
+RUN bash -x /install-deps-ubuntu.sh
 
 COPY ./install-cmake.sh /
 RUN bash -x /install-cmake.sh

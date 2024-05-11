@@ -32,11 +32,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up QEMU integration for Docker
-        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+        run: docker run --rm --privileged zhangguanzhang/qemu-user-static --reset -p yes
       - name: Build and upload Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin quay.io
-          bash -ex build.sh
+          DIST=debian ARCH=loongarch64 bash -ex build.sh
