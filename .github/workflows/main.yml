@@ -21,6 +21,8 @@ jobs:
             DIST: 'bionic'
           - ARCH: 'x86_64'
             DIST: 'bionic'
+          - ARCH: 'loongarch64'
+            DIST: 'archlinux'
 
     name: Build ${{ matrix.DIST }}  (${{ matrix.ARCH }})
     env:
@@ -36,5 +38,5 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin quay.io
-          bash -ex build.sh --pull --push
+          # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin quay.io
+          bash -ex build.sh
