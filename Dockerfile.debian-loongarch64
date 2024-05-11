@@ -24,11 +24,11 @@ ARG AUTOMAKE_VERSION=1.16.5
 COPY build-automake.sh /
 RUN bash -x /build-automake.sh
 
-ARG LIBGPG_ERROR_VERSION=1.45
+ARG LIBGPG_ERROR_VERSION=1.47
 COPY build-libgpg-error.sh /
 RUN bash -x /build-libgpg-error.sh
 
-ARG LIBASSUAN_VERSION=2.5.5
+ARG LIBASSUAN_VERSION=2.5.7
 COPY build-libassuan.sh /
 RUN bash -x /build-libassuan.sh
 

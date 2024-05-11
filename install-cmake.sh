@@ -27,5 +27,12 @@ case "$DIST" in
         ;;
 esac
 
-wget https://artifacts.assassinate-you.net/prebuilt-cmake/cmake-v3.19.1-"$cmake_dist"-"$cmake_arch".tar.gz -O- | \
-    tar xz --strip-components=1 -C/usr/local
+if [ "$cmake_arch" == "loongarch64" ];then
+   apt install zstd
+   # TODO
+   wget https://mirrors.wsyu.edu.cn/loongarch/archlinux/extra/os/loong64/cmake-3.28.2-1-loong64.pkg.tar.zst -O- | \
+    zstd -d | tar x --strip-components=1 -C /usr/local
+else
+   wget https://artifacts.assassinate-you.net/prebuilt-cmake/cmake-v3.19.1-"$cmake_dist"-"$cmake_arch".tar.gz -O- | \
+      tar xz --strip-components=1 -C/usr/local
+fi

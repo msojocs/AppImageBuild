@@ -2,7 +2,7 @@
 
 set -xe
 
-git clone -n https://github.com/freedesktop/xdg-desktop-file-utils.git desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
+git clone -n https://gitlab.freedesktop.org/xdg/desktop-file-utils.git desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 
 cd desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 

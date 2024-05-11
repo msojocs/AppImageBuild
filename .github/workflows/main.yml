@@ -22,7 +22,7 @@ jobs:
           - ARCH: 'x86_64'
             DIST: 'bionic'
           - ARCH: 'loongarch64'
-            DIST: 'archlinux'
+            DIST: 'debian'
 
     name: Build ${{ matrix.DIST }}  (${{ matrix.ARCH }})
     env:
@@ -32,6 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up QEMU integration for Docker
+      # https://github.com/multiarch/qemu-user-static/issues/188
         run: docker run --rm --privileged zhangguanzhang/qemu-user-static --reset -p yes
       - name: Build and upload Docker image
         env:
@@ -39,4 +40,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin quay.io
-          DIST=debian ARCH=loongarch64 bash -ex build.sh
+          bash -ex build.sh
