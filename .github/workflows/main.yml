@@ -41,8 +41,6 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
       - name: Set up QEMU integration for Docker
       # https://github.com/multiarch/qemu-user-static/issues/188
         run: docker run --rm --privileged zhangguanzhang/qemu-user-static --reset -p yes
@@ -62,9 +60,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Docker image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          context: .
-          file: ./Dockerfile.${{ env.DIST }}-${{ env.ARCH }}
-          tags: ${{ env.IMAGE_NAME }}:${{ env.DIST }}-${{ env.ARCH }}
+        run: |
+          docker push ${{ env.IMAGE_NAME }}:${{ env.DIST }}-${{ env.ARCH }}
