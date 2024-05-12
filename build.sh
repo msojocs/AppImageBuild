@@ -15,7 +15,7 @@ dockerfile="Dockerfile.$DIST-$ARCH"
 if [ "$IMAGE_NAME" == "" ];then
     image_name="quay.io/appimage/appimagebuild:$DIST-$ARCH"
 else
-    image_name="$IMAGE_NAME:$DIST-$ARCH"
+    image_name="${IMAGE_NAME,,}:$DIST-$ARCH"
 fi
 
 pull=
