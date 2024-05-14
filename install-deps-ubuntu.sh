@@ -34,6 +34,7 @@ packages=(
     gettext
     bison
     texinfo
+    rhash
 )
 
 apt-get install -y "${packages[@]}"

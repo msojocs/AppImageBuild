@@ -13,7 +13,7 @@ log() { echo "$(tput setaf 2)$(tput bold)$*$(tput sgr0)" ; }
 dockerfile="Dockerfile.$DIST-$ARCH"
 
 if [ "$IMAGE_NAME" == "" ];then
-    image_name="quay.io/appimage/appimagebuild:$DIST-$ARCH"
+    image_name="ghcr.io/msojocs/appimagebuild:$DIST-$ARCH"
 else
     image_name="${IMAGE_NAME,,}:$DIST-$ARCH"
 fi
