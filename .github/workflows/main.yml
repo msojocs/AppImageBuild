@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up QEMU integration for Docker
       # https://github.com/multiarch/qemu-user-static/issues/188
-        run: docker run --rm --privileged zhangguanzhang/qemu-user-static --reset -p yes
+        run: docker run --rm --privileged loongcr.lcpu.dev/multiarch/archlinux --reset -p yes
       - name: Downcase Image Name
         env:
           IMAGE_NAME: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}

@@ -1,4 +1,4 @@
-FROM cr.loongnix.cn/library/debian:buster-slim
+FROM loongcr.lcpu.dev/lcpu/debian:latest
 
 ENV ARCH=loongarch64 DIST=debian
 
